@@ -17,4 +17,9 @@ class UserRepository @Inject constructor(
         Log.d("TAG", "User inserted with id: $userId")
 
     }
+
+    suspend fun getAllUsers(): List<User> {
+        return userDatabase.userDao.getAllUsers()
+    }
+
 }
