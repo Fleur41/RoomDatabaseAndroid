@@ -2,6 +2,7 @@ package com.sam.roomdatabaseandroid.room
 
 import android.content.Context
 import androidx.room.Room
+import com.sam.roomdatabaseandroid.room.AadhaarCardDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,5 +23,10 @@ class DatabaseModule {
     @Singleton
     fun provideUserDao(userDatabase: UserDatabase): UserDao {
         return userDatabase.userDao
+    }
+    @Provides
+    @Singleton
+    fun provideAadhaarCardDao(userDatabase: UserDatabase): AadhaarCardDao {
+        return userDatabase.aadhaarCardDao
     }
 }

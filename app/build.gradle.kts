@@ -5,7 +5,7 @@ plugins {
     //hilt
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
-    kotlin("kapt")
+//    kotlin("kapt")
 }
 
 android {
