@@ -25,4 +25,7 @@ interface UserDao {
 
     @Query("DELETE FROM User WHERE id = :userId")
     suspend fun deleteAllUser(userId: Long): Int
+
+    @Query("SELECT * FROM User ")
+    fun getAllUsersWithAadhaarCard(): Flow<List<UserAndAadhaarCard>>
 }

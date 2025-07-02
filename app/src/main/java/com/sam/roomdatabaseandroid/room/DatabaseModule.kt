@@ -1,6 +1,7 @@
 package com.sam.roomdatabaseandroid.room
 
 import android.content.Context
+import androidx.compose.ui.input.key.Key.Companion.I
 import androidx.room.Room
 import com.sam.roomdatabaseandroid.room.AadhaarCardDao
 import dagger.Module
@@ -18,6 +19,8 @@ class DatabaseModule {
     @Singleton
     fun provideRoomDatabase(@ApplicationContext context: Context): UserDatabase {
         return Room.databaseBuilder(context, UserDatabase::class.java, "user_database").build()
+//        if I was to test my DatabaseModule, I should use, not the one BOVE:
+//        return  Room.inMemoryDatabaseBuilder(context, UserDatabase::class.java).build()
     }
     @Provides
     @Singleton

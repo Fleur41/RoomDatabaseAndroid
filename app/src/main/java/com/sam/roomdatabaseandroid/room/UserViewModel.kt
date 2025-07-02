@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.launch
 import java.time.Instant
@@ -19,9 +20,9 @@ class UserViewModel @Inject constructor(
 //    private val _users = MutableStateFlow<List<User>>(emptyList())
 //    val users: StateFlow<List<User>> get() = _users.asStateFlow()
 
-//    val users = userRepository.getAllUsersFlow()
-    val users = emptyFlow<List<User>>()
-//    @OptIn(ExperimentalCoroutinesApi::class)
+    val users = userRepository.getAllUsersWithAadhaarCard()
+//    val users = emptyFlow<List<User>>()
+
     fun insertUser(
         id: Long? = null,
         userName: String,
@@ -46,6 +47,11 @@ class UserViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             userRepository.deleteUser(user)
         }
+    }
+
+    fun getAllUsersWithAadhaarCard(): Flow<List<UserAndAadhaarCard>> {
+        return userRepository.getAllUsersWithAadhaarCard()
+
     }
 
 

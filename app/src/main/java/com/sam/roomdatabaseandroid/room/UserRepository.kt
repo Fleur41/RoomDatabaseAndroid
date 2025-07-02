@@ -45,5 +45,9 @@ class UserRepository @Inject constructor(
     suspend fun insertAadhaarCard(aadhaarCard: AadhaarCard) {
         userDatabase.aadhaarCardDao.upsert(aadhaarCard)
     }
+
+     fun getAllUsersWithAadhaarCard(): Flow<List<UserAndAadhaarCard>> {
+        return userDatabase.userDao.getAllUsersWithAadhaarCard()
+    }
 }
 
